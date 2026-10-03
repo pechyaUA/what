@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://kwq5jp2puops"]
+
+[ext_resource type="Script" uid="uid://h1noc72l4vnn" path="res://ship_v_01.gd" id="1_otxsw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_skjwq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otxsw"]
+albedo_color = Color(0.4392157, 0.25882354, 0.7529412, 1)
+metallic = 0.55
+roughness = 0.18
+
+[sub_resource type="BoxMesh" id="BoxMesh_skjwq"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1138143438]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5359115, 0)
+script = ExtResource("1_otxsw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=197129412]
+transform = Transform3D(3.7830892, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_skjwq")
+
+[node name="pivot" type="Node3D" parent="." unique_id=259570160]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="pivot" unique_id=37167056]
+transform = Transform3D(3.7830892, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_otxsw")
+mesh = SubResource("BoxMesh_skjwq")

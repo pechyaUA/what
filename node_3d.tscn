@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cbpt3uwwgxxey"]
+
+[ext_resource type="Texture2D" uid="uid://dsabxuhhjat1x" path="res://pngtree-close-up-texture-of-vibrant-green-grass-in-lawn-creates-a-image_13698596.png" id="1_noarx"]
+[ext_resource type="PackedScene" uid="uid://kwq5jp2puops" path="res://shipV01.tscn" id="2_noarx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
+albedo_texture = ExtResource("1_noarx")
+
+[sub_resource type="BoxMesh" id="BoxMesh_a202f"]
+size = Vector3(48.12, 1, 32.495)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4xowi"]
+size = Vector3(48.120544, 1, 32.522995)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
+sky_top_color = Color(0.8110219, 0.6608095, 0.87128156, 1)
+sky_horizon_color = Color(0.5372549, 0.83137256, 0.54901963, 1)
+sky_curve = 0.289781
+ground_bottom_color = Color(0.21176471, 0.41960785, 0.2, 1)
+ground_horizon_color = Color(0.550385, 0.8731151, 0.5354243, 1)
+ground_curve = 0.040000055
+
+[sub_resource type="Sky" id="Sky_noarx"]
+sky_material = SubResource("ProceduralSkyMaterial_a202f")
+
+[sub_resource type="Environment" id="Environment_a0tk4"]
+background_mode = 2
+sky = SubResource("Sky_noarx")
+
+[node name="Node3D" type="Node3D" unique_id=654687898]
+
+[node name="ground" type="StaticBody3D" parent="." unique_id=698613869]
+transform = Transform3D(9.738039, 0, 0, 0, 1, 0, 0, 0, 9.872188, 0, 0, 0)
+disable_mode = 2
+
+[node name="graund" type="MeshInstance3D" parent="ground" unique_id=419048836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -8.341)
+material_override = SubResource("StandardMaterial3D_a0tk4")
+mesh = SubResource("BoxMesh_a202f")
+
+[node name="collision_ground" type="CollisionShape3D" parent="ground" unique_id=760068274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -1.1427544e-05, -1, -8.35339)
+shape = SubResource("BoxShape3D_4xowi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=678258701]
+transform = Transform3D(1, 0, 0, 0, 0.3629585, 0.9318053, 0, -0.9318053, 0.3629585, -17.229069, 32.064774, 7.631364)
+shadow_enabled = true
+
+[node name="CharacterBody3D" parent="." unique_id=1138143438 instance=ExtResource("2_noarx")]
+transform = Transform3D(-0.027345868, 0, -0.99962604, 0, 1, 0, 0.99962604, 0, -0.027345868, 0, 1.0441179, 0)
+metadata/_edit_group_ = true
+
+[node name="cam_pivot" type="Marker3D" parent="CharacterBody3D" unique_id=1380508094]
+transform = Transform3D(-0.027345868, 0, 0.99962604, 0, 1, 0, -0.99962604, 0, -0.027345868, 1.8619486e-08, -0.8873968, -5.093565e-10)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/cam_pivot" unique_id=1466006076]
+transform = Transform3D(1, 0, 0, 0, 0.95792776, 0.28700945, 0, -0.28700945, 0.95792776, -0.02005148, 2.973853, 3.0393915)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1348367472]
+environment = SubResource("Environment_a0tk4")

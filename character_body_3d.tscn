@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dwdm4xecfhtg"]
+
+[ext_resource type="Script" uid="uid://cw6h5j42nxghi" path="res://character_body_3d.gd" id="1_iwpo4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_noarx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_a0tk4"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1137777282]
+transform = Transform3D(1, 0, 0, 0, -0.99942905, -0.033783197, 0, 0.033783197, -0.99942905, -9.536743e-07, 0.82432127, -0.035041094)
+script = ExtResource("1_iwpo4")
+
+[node name="pivot" type="Node3D" parent="." unique_id=77566981]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="pivot" unique_id=1619422037]
+mesh = SubResource("CylinderMesh_noarx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1743756072]
+physics_interpolation_mode = 1
+shape = SubResource("CylinderShape3D_a0tk4")
